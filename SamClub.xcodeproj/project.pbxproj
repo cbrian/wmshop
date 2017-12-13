@@ -1,0 +1,634 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		46181D421FDC783900D5521B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D411FDC783900D5521B /* AppDelegate.m */; };
+		46181D451FDC783900D5521B /* ProductListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D441FDC783900D5521B /* ProductListViewController.m */; };
+		46181D481FDC783900D5521B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46181D461FDC783900D5521B /* Main.storyboard */; };
+		46181D4B1FDC783900D5521B /* SamClub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46181D491FDC783900D5521B /* SamClub.xcdatamodeld */; };
+		46181D4D1FDC783900D5521B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46181D4C1FDC783900D5521B /* Assets.xcassets */; };
+		46181D501FDC783900D5521B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46181D4E1FDC783900D5521B /* LaunchScreen.storyboard */; };
+		46181D531FDC783900D5521B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D521FDC783900D5521B /* main.m */; };
+		46181D5D1FDC783900D5521B /* SamClubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D5C1FDC783900D5521B /* SamClubTests.m */; };
+		46181D681FDC783900D5521B /* SamClubUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D671FDC783900D5521B /* SamClubUITests.m */; };
+		46181D771FDDD3CD00D5521B /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D761FDDD3CD00D5521B /* ProductDetailViewController.m */; };
+		46181D7C1FDE048000D5521B /* WalmartGetProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D7B1FDE048000D5521B /* WalmartGetProducts.m */; };
+		46181D7D1FDE048000D5521B /* WalmartGetProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D7B1FDE048000D5521B /* WalmartGetProducts.m */; };
+		46181D7E1FDE048000D5521B /* WalmartGetProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D7B1FDE048000D5521B /* WalmartGetProducts.m */; };
+		46181D811FE0D9F200D5521B /* ProductDetailParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D801FE0D9F200D5521B /* ProductDetailParentViewController.m */; };
+		46181D821FE0D9F200D5521B /* ProductDetailParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D801FE0D9F200D5521B /* ProductDetailParentViewController.m */; };
+		46181D831FE0D9F200D5521B /* ProductDetailParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D801FE0D9F200D5521B /* ProductDetailParentViewController.m */; };
+		46181D861FE102D100D5521B /* NSString+SCExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D851FE102D100D5521B /* NSString+SCExtensions.m */; };
+		46181D871FE102D100D5521B /* NSString+SCExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D851FE102D100D5521B /* NSString+SCExtensions.m */; };
+		46181D881FE102D100D5521B /* NSString+SCExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D851FE102D100D5521B /* NSString+SCExtensions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46181D591FDC783900D5521B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46181D351FDC783900D5521B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46181D3C1FDC783900D5521B;
+			remoteInfo = SamClub;
+		};
+		46181D641FDC783900D5521B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46181D351FDC783900D5521B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46181D3C1FDC783900D5521B;
+			remoteInfo = SamClub;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		46181D3D1FDC783900D5521B /* SamClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46181D401FDC783900D5521B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		46181D411FDC783900D5521B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		46181D431FDC783900D5521B /* ProductListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductListViewController.h; sourceTree = "<group>"; };
+		46181D441FDC783900D5521B /* ProductListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductListViewController.m; sourceTree = "<group>"; };
+		46181D471FDC783900D5521B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		46181D4A1FDC783900D5521B /* SamClub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SamClub.xcdatamodel; sourceTree = "<group>"; };
+		46181D4C1FDC783900D5521B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46181D4F1FDC783900D5521B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		46181D511FDC783900D5521B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46181D521FDC783900D5521B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		46181D581FDC783900D5521B /* SamClubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamClubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46181D5C1FDC783900D5521B /* SamClubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SamClubTests.m; sourceTree = "<group>"; };
+		46181D5E1FDC783900D5521B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46181D631FDC783900D5521B /* SamClubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamClubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46181D671FDC783900D5521B /* SamClubUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SamClubUITests.m; sourceTree = "<group>"; };
+		46181D691FDC783900D5521B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46181D751FDDD3CD00D5521B /* ProductDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		46181D761FDDD3CD00D5521B /* ProductDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		46181D7A1FDE048000D5521B /* WalmartGetProducts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalmartGetProducts.h; sourceTree = "<group>"; };
+		46181D7B1FDE048000D5521B /* WalmartGetProducts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalmartGetProducts.m; sourceTree = "<group>"; };
+		46181D7F1FE0D9F200D5521B /* ProductDetailParentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductDetailParentViewController.h; sourceTree = "<group>"; };
+		46181D801FE0D9F200D5521B /* ProductDetailParentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductDetailParentViewController.m; sourceTree = "<group>"; };
+		46181D841FE102D100D5521B /* NSString+SCExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+SCExtensions.h"; path = "SamClub/Extensions/NSString+SCExtensions.h"; sourceTree = SOURCE_ROOT; };
+		46181D851FE102D100D5521B /* NSString+SCExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+SCExtensions.m"; path = "SamClub/Extensions/NSString+SCExtensions.m"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46181D3A1FDC783900D5521B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46181D551FDC783900D5521B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46181D601FDC783900D5521B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46181D341FDC783900D5521B = {
+			isa = PBXGroup;
+			children = (
+				46181D3F1FDC783900D5521B /* SamClub */,
+				46181D5B1FDC783900D5521B /* SamClubTests */,
+				46181D661FDC783900D5521B /* SamClubUITests */,
+				46181D3E1FDC783900D5521B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		46181D3E1FDC783900D5521B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46181D3D1FDC783900D5521B /* SamClub.app */,
+				46181D581FDC783900D5521B /* SamClubTests.xctest */,
+				46181D631FDC783900D5521B /* SamClubUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46181D3F1FDC783900D5521B /* SamClub */ = {
+			isa = PBXGroup;
+			children = (
+				46181D401FDC783900D5521B /* AppDelegate.h */,
+				46181D411FDC783900D5521B /* AppDelegate.m */,
+				46181D461FDC783900D5521B /* Main.storyboard */,
+				46181D4E1FDC783900D5521B /* LaunchScreen.storyboard */,
+				46181D781FDDE63300D5521B /* ViewControllers */,
+				46181D891FE102DC00D5521B /* Extensions */,
+				46181D791FDE01A500D5521B /* API */,
+				46181D4C1FDC783900D5521B /* Assets.xcassets */,
+				46181D511FDC783900D5521B /* Info.plist */,
+				46181D521FDC783900D5521B /* main.m */,
+				46181D491FDC783900D5521B /* SamClub.xcdatamodeld */,
+			);
+			path = SamClub;
+			sourceTree = "<group>";
+		};
+		46181D5B1FDC783900D5521B /* SamClubTests */ = {
+			isa = PBXGroup;
+			children = (
+				46181D5C1FDC783900D5521B /* SamClubTests.m */,
+				46181D5E1FDC783900D5521B /* Info.plist */,
+			);
+			path = SamClubTests;
+			sourceTree = "<group>";
+		};
+		46181D661FDC783900D5521B /* SamClubUITests */ = {
+			isa = PBXGroup;
+			children = (
+				46181D671FDC783900D5521B /* SamClubUITests.m */,
+				46181D691FDC783900D5521B /* Info.plist */,
+			);
+			path = SamClubUITests;
+			sourceTree = "<group>";
+		};
+		46181D781FDDE63300D5521B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				46181D431FDC783900D5521B /* ProductListViewController.h */,
+				46181D441FDC783900D5521B /* ProductListViewController.m */,
+				46181D7F1FE0D9F200D5521B /* ProductDetailParentViewController.h */,
+				46181D801FE0D9F200D5521B /* ProductDetailParentViewController.m */,
+				46181D751FDDD3CD00D5521B /* ProductDetailViewController.h */,
+				46181D761FDDD3CD00D5521B /* ProductDetailViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		46181D791FDE01A500D5521B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				46181D7A1FDE048000D5521B /* WalmartGetProducts.h */,
+				46181D7B1FDE048000D5521B /* WalmartGetProducts.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		46181D891FE102DC00D5521B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				46181D841FE102D100D5521B /* NSString+SCExtensions.h */,
+				46181D851FE102D100D5521B /* NSString+SCExtensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		46181D3C1FDC783900D5521B /* SamClub */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46181D6C1FDC783900D5521B /* Build configuration list for PBXNativeTarget "SamClub" */;
+			buildPhases = (
+				46181D391FDC783900D5521B /* Sources */,
+				46181D3A1FDC783900D5521B /* Frameworks */,
+				46181D3B1FDC783900D5521B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SamClub;
+			productName = SamClub;
+			productReference = 46181D3D1FDC783900D5521B /* SamClub.app */;
+			productType = "com.apple.product-type.application";
+		};
+		46181D571FDC783900D5521B /* SamClubTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46181D6F1FDC783900D5521B /* Build configuration list for PBXNativeTarget "SamClubTests" */;
+			buildPhases = (
+				46181D541FDC783900D5521B /* Sources */,
+				46181D551FDC783900D5521B /* Frameworks */,
+				46181D561FDC783900D5521B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46181D5A1FDC783900D5521B /* PBXTargetDependency */,
+			);
+			name = SamClubTests;
+			productName = SamClubTests;
+			productReference = 46181D581FDC783900D5521B /* SamClubTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		46181D621FDC783900D5521B /* SamClubUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46181D721FDC783900D5521B /* Build configuration list for PBXNativeTarget "SamClubUITests" */;
+			buildPhases = (
+				46181D5F1FDC783900D5521B /* Sources */,
+				46181D601FDC783900D5521B /* Frameworks */,
+				46181D611FDC783900D5521B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46181D651FDC783900D5521B /* PBXTargetDependency */,
+			);
+			name = SamClubUITests;
+			productName = SamClubUITests;
+			productReference = 46181D631FDC783900D5521B /* SamClubUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46181D351FDC783900D5521B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Brian Cao";
+				TargetAttributes = {
+					46181D3C1FDC783900D5521B = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					46181D571FDC783900D5521B = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 46181D3C1FDC783900D5521B;
+					};
+					46181D621FDC783900D5521B = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 46181D3C1FDC783900D5521B;
+					};
+				};
+			};
+			buildConfigurationList = 46181D381FDC783900D5521B /* Build configuration list for PBXProject "SamClub" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 46181D341FDC783900D5521B;
+			productRefGroup = 46181D3E1FDC783900D5521B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				46181D3C1FDC783900D5521B /* SamClub */,
+				46181D571FDC783900D5521B /* SamClubTests */,
+				46181D621FDC783900D5521B /* SamClubUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46181D3B1FDC783900D5521B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46181D501FDC783900D5521B /* LaunchScreen.storyboard in Resources */,
+				46181D4D1FDC783900D5521B /* Assets.xcassets in Resources */,
+				46181D481FDC783900D5521B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46181D561FDC783900D5521B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46181D611FDC783900D5521B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46181D391FDC783900D5521B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46181D451FDC783900D5521B /* ProductListViewController.m in Sources */,
+				46181D771FDDD3CD00D5521B /* ProductDetailViewController.m in Sources */,
+				46181D421FDC783900D5521B /* AppDelegate.m in Sources */,
+				46181D861FE102D100D5521B /* NSString+SCExtensions.m in Sources */,
+				46181D811FE0D9F200D5521B /* ProductDetailParentViewController.m in Sources */,
+				46181D531FDC783900D5521B /* main.m in Sources */,
+				46181D4B1FDC783900D5521B /* SamClub.xcdatamodeld in Sources */,
+				46181D7C1FDE048000D5521B /* WalmartGetProducts.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46181D541FDC783900D5521B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46181D5D1FDC783900D5521B /* SamClubTests.m in Sources */,
+				46181D821FE0D9F200D5521B /* ProductDetailParentViewController.m in Sources */,
+				46181D7D1FDE048000D5521B /* WalmartGetProducts.m in Sources */,
+				46181D871FE102D100D5521B /* NSString+SCExtensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46181D5F1FDC783900D5521B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46181D681FDC783900D5521B /* SamClubUITests.m in Sources */,
+				46181D831FE0D9F200D5521B /* ProductDetailParentViewController.m in Sources */,
+				46181D7E1FDE048000D5521B /* WalmartGetProducts.m in Sources */,
+				46181D881FE102D100D5521B /* NSString+SCExtensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46181D5A1FDC783900D5521B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46181D3C1FDC783900D5521B /* SamClub */;
+			targetProxy = 46181D591FDC783900D5521B /* PBXContainerItemProxy */;
+		};
+		46181D651FDC783900D5521B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46181D3C1FDC783900D5521B /* SamClub */;
+			targetProxy = 46181D641FDC783900D5521B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		46181D461FDC783900D5521B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46181D471FDC783900D5521B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		46181D4E1FDC783900D5521B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46181D4F1FDC783900D5521B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		46181D6A1FDC783900D5521B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		46181D6B1FDC783900D5521B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		46181D6D1FDC783900D5521B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3E3XSM484P;
+				INFOPLIST_FILE = SamClub/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SamChallenge.SamClub;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		46181D6E1FDC783900D5521B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3E3XSM484P;
+				INFOPLIST_FILE = SamClub/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SamChallenge.SamClub;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		46181D701FDC783900D5521B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3E3XSM484P;
+				INFOPLIST_FILE = SamClubTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SamChallenge.SamClubTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SamClub.app/SamClub";
+			};
+			name = Debug;
+		};
+		46181D711FDC783900D5521B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3E3XSM484P;
+				INFOPLIST_FILE = SamClubTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SamChallenge.SamClubTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SamClub.app/SamClub";
+			};
+			name = Release;
+		};
+		46181D731FDC783900D5521B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3E3XSM484P;
+				INFOPLIST_FILE = SamClubUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SamChallenge.SamClubUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SamClub;
+			};
+			name = Debug;
+		};
+		46181D741FDC783900D5521B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3E3XSM484P;
+				INFOPLIST_FILE = SamClubUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SamChallenge.SamClubUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SamClub;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46181D381FDC783900D5521B /* Build configuration list for PBXProject "SamClub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46181D6A1FDC783900D5521B /* Debug */,
+				46181D6B1FDC783900D5521B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46181D6C1FDC783900D5521B /* Build configuration list for PBXNativeTarget "SamClub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46181D6D1FDC783900D5521B /* Debug */,
+				46181D6E1FDC783900D5521B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46181D6F1FDC783900D5521B /* Build configuration list for PBXNativeTarget "SamClubTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46181D701FDC783900D5521B /* Debug */,
+				46181D711FDC783900D5521B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46181D721FDC783900D5521B /* Build configuration list for PBXNativeTarget "SamClubUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46181D731FDC783900D5521B /* Debug */,
+				46181D741FDC783900D5521B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		46181D491FDC783900D5521B /* SamClub.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				46181D4A1FDC783900D5521B /* SamClub.xcdatamodel */,
+			);
+			currentVersion = 46181D4A1FDC783900D5521B /* SamClub.xcdatamodel */;
+			path = SamClub.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 46181D351FDC783900D5521B /* Project object */;
+}
