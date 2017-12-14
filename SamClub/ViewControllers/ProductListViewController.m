@@ -25,6 +25,7 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
 @property (nonatomic, assign) bool isListingFinished;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSCache *cacheProductImages;
+@property (strong, nonatomic) UITableViewCell *saveCell;
 @end
 
 @implementation ProductListViewController
@@ -61,9 +62,9 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
         self.numProducts += [jsonResponse[@"pageSize"] integerValue];
                   // NSLog(@"response = %@", jsonResponse);
                   
-        dispatch_async(dispatch_get_main_queue(), ^{
+        //dispatch_async(dispatch_get_main_queue(), ^{
                       [self.tableView reloadData];
-        });
+        //});
     }
     else
     {
@@ -92,37 +93,40 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
     NSString* trimASCIISet = [NSString filter_ASCIISet_String: productName];
 
     cell.textLabel.text = [NSString stringWithFormat:@"%@\nPrice: %@", trimASCIISet, self.products[indexPath.row][@"price"]];
-    
-    
+    [self fetchProductImage:indexProduct Cell:cell];
+    return cell;
+}
+
+-(void) fetchProductImage:(NSDictionary *) theProduct Cell: (UITableViewCell *) cell
+{
     // Fetch and cache large images and move all requests to WalmartGetProducts later
-    NSString * urlString = indexProduct[@"productImage"];
+    NSString * urlString = theProduct[@"productImage"];
     NSData *cachedImageData = [self.cacheProductImages objectForKey:urlString];
     if (cachedImageData)
     {
-         cell.imageView.image = [UIImage imageWithData:cachedImageData];
+        cell.imageView.image = [UIImage imageWithData:cachedImageData];
     }
     else
     {
-        __weak ProductListViewController *weakself = self;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
-            if (imgData) {
-                // STORE IN FILESYSTEM for app quit or offline
-//                NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//                NSString *file = [cachesDirectory stringByAppendingPathComponent:urlString];
-//                [imgData writeToFile:file atomically:YES];
-                
-                // STORE IN MEMORY
-                [weakself.cacheProductImages setObject:imgData forKey:urlString];
-
-                dispatch_async(dispatch_get_main_queue(), ^{
-                     cell.imageView.image = [UIImage imageWithData:imgData];
-                    [weakself.tableView reloadData]; // Todo: Change to refresh cell later if UI slows
-                });
-            }
-        });
+        [WalmartGetProducts requestProductImage:urlString  Delegate:self];
+        self.saveCell = cell;
     }
-    return cell;
+}
+
+-(void) returnImageData:(NSData *) imgData urlStr:(NSString *)urlString
+{
+    //STORE IN FILESYSTEM for app quit or offline
+    NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *file = [cachesDirectory stringByAppendingPathComponent:urlString];
+    [imgData writeToFile:file atomically:YES];
+    
+    // STORE IN MEMORY
+    [self.cacheProductImages setObject:imgData forKey:urlString];
+    __weak ProductListViewController *weakself = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        weakself.saveCell.imageView.image = [UIImage imageWithData:imgData];
+        [weakself.tableView reloadData]; // Todo: Change to refresh cell later if UI slows
+    });
 }
 
 // UITableViewDelegate methods

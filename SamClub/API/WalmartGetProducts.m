@@ -44,4 +44,17 @@ static id delegate;
     }
     
 }
+
++ (void) requestProductImage:(NSString *)urlString Delegate: (id)callDelegate
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
+        if (imgData) {
+            if ([delegate respondsToSelector:@selector(returnImageData:urlStr:)])
+            {
+                [delegate returnImageData:imgData urlStr:urlString];
+            }
+        }
+    });
+}
 @end
