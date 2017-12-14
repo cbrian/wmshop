@@ -9,6 +9,7 @@
 #import "ProductListViewController.h"
 #import "ProductDetailParentViewController.h"
 #import "NSString+SCExtensions.h"
+#import "WalmartGetProducts.h"
 
 #define kMaxProductPerPage 30
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -42,38 +43,7 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
     // To append with apiKey/1/1" as suffix
     NSString *urlString = [NSString stringWithFormat:@"%@/%@/%d/%d", hostAPIURLPrefix, apiKey, pageNumber, pageSize];
     NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL: url];
-    __weak ProductListViewController *weakself = self;
-    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data,NSURLResponse *response,NSError *error)
-      {
-          if (data.length > 0 && error == nil)
-          {
-              NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
-                                                                       options:0
-                                                                         error:&error];
-              if (jsonResponse) {
-                  [weakself.products addObjectsFromArray:[jsonResponse objectForKey:@"products"]]; // stringValue];
-                  weakself.totalProducts = [[jsonResponse objectForKey:@"totalProducts"] integerValue];
-                  weakself.numProducts += [jsonResponse[@"pageSize"] integerValue];
-                  // NSLog(@"response = %@", jsonResponse);
-                
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                      [weakself.tableView reloadData];
-                  });
-              }
-              else
-              {
-                  NSLog(@"No response ");
-                  weakself.isListingFinished = true;
-              }
-          }
-          else
-          {
-              NSLog(@"Response error = %@", error);
-              self.isListingFinished = true;
-          }
-      }
-      ] resume];
+    [WalmartGetProducts requestProductListAPI:url Delegate:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +51,26 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
     // Dispose of any resources that can be recreated.
 }
 
+-(void) returnAllData:(NSDictionary *)jsonResponse
+{
+    NSLog(@"jsonResponse Results are %@", jsonResponse);
+
+    if (jsonResponse) {
+        [self.products addObjectsFromArray:[jsonResponse objectForKey:@"products"]];
+        self.totalProducts = [[jsonResponse objectForKey:@"totalProducts"] integerValue];
+        self.numProducts += [jsonResponse[@"pageSize"] integerValue];
+                  // NSLog(@"response = %@", jsonResponse);
+                  
+        dispatch_async(dispatch_get_main_queue(), ^{
+                      [self.tableView reloadData];
+        });
+    }
+    else
+    {
+        //NSLog(@"No response ");
+        self.isListingFinished = true;
+    }
+}
 
 // Datasource delegate methods
  - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -118,9 +108,9 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
             NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
             if (imgData) {
                 // STORE IN FILESYSTEM for app quit or offline
-                NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-                NSString *file = [cachesDirectory stringByAppendingPathComponent:urlString];
-                [imgData writeToFile:file atomically:YES];
+//                NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//                NSString *file = [cachesDirectory stringByAppendingPathComponent:urlString];
+//                [imgData writeToFile:file atomically:YES];
                 
                 // STORE IN MEMORY
                 [weakself.cacheProductImages setObject:imgData forKey:urlString];

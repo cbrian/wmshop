@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface WalmartGetProducts : NSObject
-+ (void) requestProductImage:(id)callDelegate;
+//+ (void) requestProductImage:(id)callDelegate;
++ (void) requestProductListAPI:(NSURL *) url Delegate:(id)callDelegate;
 @end
