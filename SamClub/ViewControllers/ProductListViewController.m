@@ -43,6 +43,7 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
     NSString *urlString = [NSString stringWithFormat:@"%@/%@/%d/%d", hostAPIURLPrefix, apiKey, pageNumber, pageSize];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL: url];
+    __weak ProductListViewController *weakself = self;
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data,NSURLResponse *response,NSError *error)
       {
           if (data.length > 0 && error == nil)
@@ -51,19 +52,19 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
                                                                        options:0
                                                                          error:&error];
               if (jsonResponse) {
-                  [self.products addObjectsFromArray:[jsonResponse objectForKey:@"products"]]; // stringValue];
-                  self.totalProducts = [[jsonResponse objectForKey:@"totalProducts"] integerValue];
-                  self.numProducts += [jsonResponse[@"pageSize"] integerValue];
+                  [weakself.products addObjectsFromArray:[jsonResponse objectForKey:@"products"]]; // stringValue];
+                  weakself.totalProducts = [[jsonResponse objectForKey:@"totalProducts"] integerValue];
+                  weakself.numProducts += [jsonResponse[@"pageSize"] integerValue];
                   // NSLog(@"response = %@", jsonResponse);
                 
                   dispatch_async(dispatch_get_main_queue(), ^{
-                      [self.tableView reloadData];
+                      [weakself.tableView reloadData];
                   });
               }
               else
               {
                   NSLog(@"No response ");
-                  self.isListingFinished = true;
+                  weakself.isListingFinished = true;
               }
           }
           else
