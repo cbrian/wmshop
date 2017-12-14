@@ -14,6 +14,7 @@
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 const NSString * apiKey = @"f545c4be-0f79-42c9-8616-3baff5c8aa5a";
+const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/api/walmart/v1/walmartproducts";
 
 @interface ProductListViewController ()
 @property (nonatomic, strong) NSMutableArray *products;
@@ -38,14 +39,8 @@ const NSString * apiKey = @"f545c4be-0f79-42c9-8616-3baff5c8aa5a";
 
 -(IBAction) requestProductList:(int)pageNumber PageSize:(int)pageSize
 {
-    NSMutableString *urlString = [[NSMutableString alloc] init];
-    [urlString appendString:  @"https://walmartlabs-test.appspot.com/_ah/api/walmart/v1/walmartproducts/"];
-    // To append with apiKey//1/1" as suffix and replace with stringFormat later
-    [urlString appendString:(NSMutableString *)apiKey];
-    [urlString appendString:@"/"];
-    [urlString appendString:[NSString stringWithFormat:@"%d", pageNumber]];
-    [urlString appendString:@"/"];
-    [urlString appendString:[NSString stringWithFormat:@"%d", pageSize]];
+    // To append with apiKey/1/1" as suffix
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@/%d/%d", hostAPIURLPrefix, apiKey, pageNumber, pageSize];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL: url];
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data,NSURLResponse *response,NSError *error)
