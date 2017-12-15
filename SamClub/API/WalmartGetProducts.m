@@ -33,9 +33,9 @@
               NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
                                                                            options:0
                                                                              error:&error];
-     
+              __weak WalmartGetProducts * weakSelf = self;
               dispatch_async(dispatch_get_main_queue(), ^{
-                  [self.delegate fetchDataCompleted:jsonResponse];
+                  [weakSelf.delegate fetchDataCompleted:jsonResponse];
               });
           }
           else
@@ -48,12 +48,13 @@
 
 - (void) requestProductImageAPI:(NSString *)urlString
 {
+    __weak WalmartGetProducts * weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
         if (imgData) {
-            if ([self.delegate respondsToSelector:@selector(fetchImageCompleted:urlStr:)])
+            if ([weakSelf.delegate respondsToSelector:@selector(fetchImageCompleted:urlStr:)])
             {
-                [self.delegate fetchImageCompleted:imgData urlStr:urlString];
+                [weakSelf.delegate fetchImageCompleted:imgData urlStr:urlString];
             }
         }
     });

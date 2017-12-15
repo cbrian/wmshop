@@ -102,11 +102,4 @@
     return 0;
 }
 
-- (IBAction)btnStartAgain:(id)sender
-{
-    ProductDetailViewController *startingViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = @[startingViewController];
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
-}
-
 @end
