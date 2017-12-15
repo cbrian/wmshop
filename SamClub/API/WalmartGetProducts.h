@@ -8,9 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol getProductsProtocol <NSObject>
+@required
+- (void)fetchCompleted:(NSDictionary *)responseDict;
+@end
+
 @interface WalmartGetProducts : NSObject
 
-+ (void) requestProductListAPI:(NSURL *)url Delegate:(id)callDelegate;
-+ (void) requestProductImage:(NSString *)urlString Delegate:(id)callDelegate;
+@property (nonatomic, weak) id delegate;
+
+//- (void) setDelegate:(id)newDelegate;
+- (void) requestProductListAPI:(NSURL *)url;
+- (void) requestProductImage:(NSString *)urlString;
 
 @end

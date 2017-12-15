@@ -10,7 +10,7 @@
 
 @interface ProductListViewController: UIViewController <UITableViewDelegate, UITableViewDataSource>
 
--(void) returnAllData:(NSDictionary *)jsonResponse;
+-(void) fetchDataCompleted:(NSDictionary *)jsonResponse;
 -(void) returnImageData:(NSData *) imgData urlStr:(NSString *)urlString;
 
 @end

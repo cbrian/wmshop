@@ -20,7 +20,7 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
 const NSString *CellIdentifier = @"LazyTableCell";
 const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
 
-@interface ProductListViewController ()
+@interface ProductListViewController () <getProductsProtocol>
 @property (nonatomic, strong) NSMutableArray *products;
 @property (nonatomic, assign) NSInteger totalProducts;
 @property (nonatomic, assign) NSInteger numProducts;
@@ -47,7 +47,9 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     // To append with apiKey/1/1" as suffix
     NSString *urlString = [NSString stringWithFormat:@"%@/%@/%d/%d", hostAPIURLPrefix, apiKey, pageNumber, pageSize];
     NSURL *url = [NSURL URLWithString:urlString];
-    [WalmartGetProducts requestProductListAPI:url Delegate:self];
+    WalmartGetProducts *productGetService = [[WalmartGetProducts alloc] init];
+    productGetService.delegate = self;
+    [productGetService requestProductListAPI:url];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +57,7 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     // Dispose of any resources that can be recreated.
 }
 
--(void) returnAllData:(NSDictionary *)jsonResponse
+-(void) fetchDataCompleted:(NSDictionary *)jsonResponse
 {
     //NSLog(@"jsonResponse Results are %@", jsonResponse);
 
@@ -114,12 +116,14 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     }
     else
     {
-        [WalmartGetProducts requestProductImage:urlString  Delegate:self];
+        WalmartGetProducts *service = [[WalmartGetProducts alloc] init];
+        service.delegate = self;
+        [service requestProductImage:urlString];
         self.saveCell = cell;
     }
 }
 
--(void) returnImageData:(NSData *) imgData urlStr:(NSString *)urlString
+- (void)returnImageData:(NSData *) imgData urlStr:(NSString *)urlString
 {
     //STORE IN FILESYSTEM for app quit or offline
     NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
