@@ -118,12 +118,12 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     {
         WalmartGetProducts *service = [WalmartGetProducts sharedInstance];
         service.delegate = self;
-        [service requestProductImage:urlString];
+        [service requestProductImageAPI:urlString];
         self.saveCell = cell;
     }
 }
 
-- (void)returnImageData:(NSData *) imgData urlStr:(NSString *)urlString
+- (void)fetchImageCompleted:(NSData *) imgData urlStr:(NSString *)urlString
 {
     //STORE IN FILESYSTEM for app quit or offline
     NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];

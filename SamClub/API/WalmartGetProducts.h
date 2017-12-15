@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol getProductsProtocol <NSObject>
+@protocol getProductsProtocol<NSObject>
 @required
 - (void)fetchCompleted:(NSDictionary *)responseDict;
+- (void)fetchImageCompleted:(NSData *) imgData urlStr:(NSString *)urlString;
 @end
 
 @interface WalmartGetProducts : NSObject
@@ -19,6 +20,6 @@
 
 + (WalmartGetProducts *)sharedInstance;
 - (void) requestProductListAPI:(NSURL *)url;
-- (void) requestProductImage:(NSString *)urlString;
+- (void) requestProductImageAPI:(NSString *)urlString;
 
 @end

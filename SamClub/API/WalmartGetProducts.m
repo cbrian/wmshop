@@ -46,14 +46,14 @@
       ] resume];
 }
 
-- (void) requestProductImage:(NSString *)urlString
+- (void) requestProductImageAPI:(NSString *)urlString
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
         if (imgData) {
-            if ([self.delegate respondsToSelector:@selector(returnImageData:urlStr:)])
+            if ([self.delegate respondsToSelector:@selector(fetchImageCompleted:urlStr:)])
             {
-                [self.delegate returnImageData:imgData urlStr:urlString];
+                [self.delegate fetchImageCompleted:imgData urlStr:urlString];
             }
         }
     });
