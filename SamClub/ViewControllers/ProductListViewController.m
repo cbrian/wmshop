@@ -17,10 +17,13 @@
 const NSString * apiKey = @"f545c4be-0f79-42c9-8616-3baff5c8aa5a";
 const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/api/walmart/v1/walmartproducts";
 
+const NSString *CellIdentifier = @"LazyTableCell";
+const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
+
 @interface ProductListViewController ()
 @property (nonatomic, strong) NSMutableArray *products;
-@property (nonatomic, assign) int totalProducts;
-@property (nonatomic, assign) int numProducts;
+@property (nonatomic, assign) NSInteger totalProducts;
+@property (nonatomic, assign) NSInteger numProducts;
 @property (nonatomic, assign) int curentPageNumber;
 @property (nonatomic, assign) bool isListingFinished;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -54,21 +57,16 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
 
 -(void) returnAllData:(NSDictionary *)jsonResponse
 {
-    NSLog(@"jsonResponse Results are %@", jsonResponse);
+    //NSLog(@"jsonResponse Results are %@", jsonResponse);
 
     if (jsonResponse) {
         [self.products addObjectsFromArray:[jsonResponse objectForKey:@"products"]];
         self.totalProducts = [[jsonResponse objectForKey:@"totalProducts"] integerValue];
         self.numProducts += [jsonResponse[@"pageSize"] integerValue];
-                  // NSLog(@"response = %@", jsonResponse);
-                  
-        //dispatch_async(dispatch_get_main_queue(), ^{
-                      [self.tableView reloadData];
-        //});
+        [self.tableView reloadData];
     }
     else
     {
-        //NSLog(@"No response ");
         self.isListingFinished = true;
     }
 }
@@ -79,21 +77,29 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
     return [self.products count];
 }
 
--(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    static NSString *tableIdentifier = @"productTableItem";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:tableIdentifier];
-        cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-        cell.textLabel.numberOfLines = 0;
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
+-(UITableViewCell *) tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = nil;
+    //NSLog(@"product count = %ul", self.products.count);
+    if (self.products.count == 0 && indexPath.row == 0)
+    {
+        // Add a placeholder cell while waiting on table data
+        cell = [tableView dequeueReusableCellWithIdentifier:PlaceholderCellIdentifier];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:CellIdentifier];
+            cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.textLabel.numberOfLines = 0;
+            cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
+        }
+        NSDictionary *indexProduct = self.products[indexPath.row];
+        NSString * productName = indexProduct[@"productName"];
+        NSString* trimASCIISet = [NSString filter_ASCIISet_String: productName];
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@\nPrice: %@", trimASCIISet, self.products[indexPath.row][@"price"]];
+        [self fetchProductImage:indexProduct Cell:cell];
     }
-    NSDictionary *indexProduct = self.products[indexPath.row];
-    NSString * productName = indexProduct[@"productName"];
-    NSString* trimASCIISet = [NSString filter_ASCIISet_String: productName];
-
-    cell.textLabel.text = [NSString stringWithFormat:@"%@\nPrice: %@", trimASCIISet, self.products[indexPath.row][@"price"]];
-    [self fetchProductImage:indexProduct Cell:cell];
     return cell;
 }
 
@@ -170,7 +176,7 @@ const NSString * hostAPIURLPrefix = @"https://walmartlabs-test.appspot.com/_ah/a
         NSLog(@"Finished");
     }
     
-    // TODO: Save to add offline support later
+    // TODO: Save to add offline support later if requested
 //    [self.fetchedResultsController.fetchRequest setFetchLimit:newFetchLimit];
 //    [NSFetchedResultsController deleteCacheWithName:@"cache name"];
 //    NSError *error;

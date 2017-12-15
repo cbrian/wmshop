@@ -26,7 +26,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setupPageViewController
+- (void)setupPageViewController
 {
     // Create page view controller
     self.PageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
