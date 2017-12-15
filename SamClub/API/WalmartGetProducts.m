@@ -13,6 +13,16 @@
 
 @implementation WalmartGetProducts
 
++ (WalmartGetProducts *)sharedInstance {
+    static WalmartGetProducts *sharedInstance = nil;
+    static dispatch_once_t onceToken; // onceToken = 0
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[WalmartGetProducts alloc] init];
+    });
+    
+    return sharedInstance;
+}
+
 - (void) requestProductListAPI:(NSURL *) url
 {
     NSURLRequest *request = [NSURLRequest requestWithURL: url];

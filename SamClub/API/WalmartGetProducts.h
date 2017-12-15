@@ -17,7 +17,7 @@
 
 @property (nonatomic, weak) id delegate;
 
-//- (void) setDelegate:(id)newDelegate;
++ (WalmartGetProducts *)sharedInstance;
 - (void) requestProductListAPI:(NSURL *)url;
 - (void) requestProductImage:(NSString *)urlString;
 

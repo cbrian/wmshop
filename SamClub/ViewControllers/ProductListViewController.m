@@ -47,7 +47,7 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     // To append with apiKey/1/1" as suffix
     NSString *urlString = [NSString stringWithFormat:@"%@/%@/%d/%d", hostAPIURLPrefix, apiKey, pageNumber, pageSize];
     NSURL *url = [NSURL URLWithString:urlString];
-    WalmartGetProducts *productGetService = [[WalmartGetProducts alloc] init];
+    WalmartGetProducts *productGetService = [WalmartGetProducts sharedInstance];
     productGetService.delegate = self;
     [productGetService requestProductListAPI:url];
 }
@@ -116,7 +116,7 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     }
     else
     {
-        WalmartGetProducts *service = [[WalmartGetProducts alloc] init];
+        WalmartGetProducts *service = [WalmartGetProducts sharedInstance];
         service.delegate = self;
         [service requestProductImage:urlString];
         self.saveCell = cell;
