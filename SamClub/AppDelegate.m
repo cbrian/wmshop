@@ -16,7 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Don
+    // Saved for later 
 //    UIPageControl *pageControl = [UIPageControl appearance];
 //    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
 //    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
