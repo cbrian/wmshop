@@ -43,8 +43,8 @@
 - (void)setupTopContent
 {
     self.productName.text = [NSString filter_ASCIISet_String:self.selectedProduct[@"productName"]];
+    self.shortWKWebView.scrollView.scrollEnabled = NO;
     
-    //self.productType.text = selectedProduct[@"shortDescription"];
     NSString *htmlString = [NSString filter_ASCIISet_String: self.selectedProduct[@"shortDescription"]];
     [self.shortWKWebView loadHTMLString:htmlString baseURL:nil];
     self.productCost.text = self.selectedProduct[@"price"];
@@ -80,7 +80,6 @@
     bool isInStock = self.selectedProduct[@"inStock"];
     [availableStatus appendString:isInStock?@"InStock":@"OutOfStock"];
     self.productAvailableStatus.text = availableStatus;
-    //self.productID.text = [NSString stringWithFormat:@"ID: %@", self.selectedProduct[@"productId"]];
     [self.longDescription loadHTMLString:[NSString filter_ASCIISet_String: self.selectedProduct[@"longDescription"]] baseURL:nil];
 }
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol getProductsProtocol<NSObject>
+@protocol getProductsProtocol <NSObject>
 @required
 - (void)fetchCompleted:(NSDictionary *)responseDict;
 - (void)fetchImageCompleted:(NSData *) imgData urlStr:(NSString *)urlString;
