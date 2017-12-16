@@ -10,7 +10,7 @@
 
 @protocol getProductsProtocol <NSObject>
 @required
-- (void)fetchCompleted:(NSDictionary *)responseDict;
+- (void)fetchDataCompleted:(NSDictionary *)responseDict;
 - (void)fetchImageCompleted:(NSData *) imgData urlStr:(NSString *)urlString;
 @end
 
