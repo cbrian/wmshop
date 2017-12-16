@@ -51,12 +51,13 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
     NSUInteger index = ((ProductDetailViewController*) viewController).pageIndex;
-    [self updatePageNumber:index+1];
     if ((index == 0) || (index == NSNotFound))
     {
+        [self updatePageNumber:index];
         return nil;
     }
     index--;
+    [self updatePageNumber:index+1];
     return [self viewControllerAtIndex:index];
 }
 
@@ -68,9 +69,9 @@
     {
         return nil;
     }
-    
-    index++;
     [self updatePageNumber:index];
+    index++;
+   
     if (index == [self.products count])
     {
         return nil;
@@ -81,17 +82,18 @@
 
 - (void)updatePageNumber: (NSInteger) index
 {
-    if (index == 1)
+    NSInteger pageDisplayNum = index + 1;
+    if ((pageDisplayNum) == 1)
     {   // First page
-        self.pageNumber.text = [NSString stringWithFormat:@"Item %lu  >", index];
+        self.pageNumber.text = [NSString stringWithFormat:@"Item %lu  >", pageDisplayNum];
     }
-    else if (index == self.products.count)
+    else if (index == self.products.count-1)
     {
-        self.pageNumber.text = [NSString stringWithFormat:@"<  Item %lu", index];
+        self.pageNumber.text = [NSString stringWithFormat:@"<  Item %lu", pageDisplayNum];
     }
     else
     {
-        self.pageNumber.text = [NSString stringWithFormat:@"<  Item %lu  >", index];
+        self.pageNumber.text = [NSString stringWithFormat:@"<  Item %lu  >", pageDisplayNum];
     }
 }
 

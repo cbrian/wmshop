@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +28,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yHp-0h-TAf" id="cBS-Yu-fnO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Loading…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XJw-i3-tT1">
@@ -44,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rCD-BR-qao" id="RfY-ru-4PV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgA-eM-Yov">
@@ -178,7 +179,7 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SaR-Gu-Bsg">
                                                 <rect key="frame" x="20" y="293" width="335" height="160"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="160" id="dTF-t8-nCA"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="160" id="dTF-t8-nCA"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="0iW-Dg-kuS" userLabel="Bottom Stack View">
@@ -212,6 +213,7 @@
                                                     <constraint firstItem="YQg-y5-42v" firstAttribute="top" secondItem="dvF-Lp-GPD" secondAttribute="bottom" id="R8a-0g-PmE"/>
                                                     <constraint firstItem="dre-Dc-Wy1" firstAttribute="top" secondItem="dvF-Lp-GPD" secondAttribute="bottom" constant="20" id="Sji-M2-bgE"/>
                                                     <constraint firstAttribute="trailing" secondItem="hk8-c4-dvS" secondAttribute="trailing" id="XqI-Gp-mv4"/>
+                                                    <constraint firstItem="dvF-Lp-GPD" firstAttribute="firstBaseline" secondItem="YQg-y5-42v" secondAttribute="firstBaseline" id="Z2R-Ng-Jeq"/>
                                                     <constraint firstAttribute="height" constant="300" id="fm9-fU-PVP"/>
                                                     <constraint firstItem="dvF-Lp-GPD" firstAttribute="leading" secondItem="0iW-Dg-kuS" secondAttribute="leading" id="pLN-jR-cdh"/>
                                                     <constraint firstItem="hk8-c4-dvS" firstAttribute="top" secondItem="YQg-y5-42v" secondAttribute="bottom" constant="20" id="tV5-rs-rLf"/>
@@ -228,6 +230,7 @@
                                             <constraint firstItem="bAf-dJ-VBT" firstAttribute="top" secondItem="OuC-oQ-ei2" secondAttribute="top" constant="20" id="MaY-Po-UD1"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="0iW-Dg-kuS" secondAttribute="bottom" constant="20" id="cda-DE-YVp"/>
                                             <constraint firstItem="0iW-Dg-kuS" firstAttribute="leading" secondItem="SaR-Gu-Bsg" secondAttribute="leading" id="iUT-7u-H4V"/>
+                                            <constraint firstAttribute="height" constant="811" id="j08-XF-6Uk"/>
                                             <constraint firstAttribute="trailing" secondItem="0iW-Dg-kuS" secondAttribute="trailing" constant="20" id="j0j-Ie-rLw"/>
                                             <constraint firstItem="bAf-dJ-VBT" firstAttribute="width" secondItem="OuC-oQ-ei2" secondAttribute="width" constant="-40" id="k6f-t6-GXp"/>
                                             <constraint firstAttribute="trailing" secondItem="bAf-dJ-VBT" secondAttribute="trailing" constant="20" id="oHL-QO-1cL"/>
