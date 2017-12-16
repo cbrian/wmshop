@@ -8,6 +8,7 @@
 
 #import "ProductDetailViewController.h"
 #import "NSString+SCExtensions.h"
+#import "WalmartGetProducts.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
@@ -61,6 +62,8 @@
     }
     else
     {
+        WalmartGetProducts *wmGetService = [WalmartGetProducts sharedInstance];
+        [wmGetService requestProductImageAPI:urlStr];
         __weak ProductDetailViewController *weakself = self;
         dispatch_async(kBgQueue, ^{
             NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];

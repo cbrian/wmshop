@@ -149,7 +149,7 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
 {
     //NSLog(@"row = %d", (int)indexPath.row);
     ProductDetailParentViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailParentViewControllerID"];
-    detailViewController.currentProductIndex = indexPath.row;
+    detailViewController.pageIndex = indexPath.row;
     detailViewController.products = self.products;
     detailViewController.cachedImages = self.cacheProductImages;
     [self.navigationController pushViewController:detailViewController animated:YES];

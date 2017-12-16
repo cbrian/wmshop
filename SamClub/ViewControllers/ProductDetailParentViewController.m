@@ -10,6 +10,7 @@
 #import "ProductDetailViewController.h"
 
 @interface ProductDetailParentViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *pageNumber;
 @property (nonatomic,strong) UIPageViewController *pageViewController;
 @end
 
@@ -33,29 +34,28 @@
     self.pageViewController.dataSource = self;
    
     
-    ProductDetailViewController *startingViewController = [self viewControllerAtIndex:0];
+    ProductDetailViewController *startingViewController = [self viewControllerAtIndex:self.pageIndex];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
     [[self.pageViewController view] setFrame:[[self view] bounds]];
     
-    
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+    [self updatePageNumber:self.pageIndex];
 }
 
 #pragma mark - Page View Datasource Methods
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
     NSUInteger index = ((ProductDetailViewController*) viewController).pageIndex;
-    
+    [self updatePageNumber:index+1];
     if ((index == 0) || (index == NSNotFound))
     {
         return nil;
     }
-    
     index--;
     return [self viewControllerAtIndex:index];
 }
@@ -70,11 +70,29 @@
     }
     
     index++;
+    [self updatePageNumber:index];
     if (index == [self.products count])
     {
         return nil;
     }
+
     return [self viewControllerAtIndex:index];
+}
+
+- (void)updatePageNumber: (NSInteger) index
+{
+    if (index == 1)
+    {   // First page
+        self.pageNumber.text = [NSString stringWithFormat:@"Item %lu  >", index];
+    }
+    else if (index == self.products.count)
+    {
+        self.pageNumber.text = [NSString stringWithFormat:@"<  Item %lu", index];
+    }
+    else
+    {
+        self.pageNumber.text = [NSString stringWithFormat:@"<  Item %lu  >", index];
+    }
 }
 
 #pragma mark - Other Methods
