@@ -261,9 +261,9 @@
                     </view>
                     <connections>
                         <outlet property="longDescription" destination="hk8-c4-dvS" id="bsL-gh-90w"/>
+                        <outlet property="longDescriptionLabel" destination="dre-Dc-Wy1" id="GgG-s4-UVp"/>
                         <outlet property="productAvailableStatus" destination="YQg-y5-42v" id="Bdc-bz-PqZ"/>
                         <outlet property="productCost" destination="M8w-vD-iG5" id="deK-uh-yNn"/>
-                        <outlet property="productID" destination="dre-Dc-Wy1" id="IBf-IG-e2u"/>
                         <outlet property="productImage" destination="SaR-Gu-Bsg" id="sgM-Id-zIh"/>
                         <outlet property="productName" destination="RxG-WA-eyo" id="nor-WT-Cme"/>
                         <outlet property="productRating" destination="dvF-Lp-GPD" id="QaB-fS-3fZ"/>

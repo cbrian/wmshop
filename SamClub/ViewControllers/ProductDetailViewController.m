@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *productCost;
 @property (strong, nonatomic) IBOutlet UILabel *productRating;
 @property (strong, nonatomic) IBOutlet UILabel *productAvailableStatus;
-@property (strong, nonatomic) IBOutlet UILabel *productID;
+@property (strong, nonatomic) IBOutlet UILabel *longDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *productImage;
 @property (strong, nonatomic) IBOutlet UIWebView *shortWKWebView;
 @property (strong, nonatomic) IBOutlet UIWebView *longDescription;
@@ -83,7 +83,15 @@
     bool isInStock = self.selectedProduct[@"inStock"];
     [availableStatus appendString:isInStock?@"InStock":@"OutOfStock"];
     self.productAvailableStatus.text = availableStatus;
-    [self.longDescription loadHTMLString:[NSString filter_ASCIISet_String: self.selectedProduct[@"longDescription"]] baseURL:nil];
+    NSString * longDescription = self.selectedProduct[@"longDescription"];
+    if (longDescription.length == 0)
+    {
+        self.longDescriptionLabel.hidden = true;
+    }
+    else
+    {
+        [self.longDescription loadHTMLString:[NSString filter_ASCIISet_String: longDescription] baseURL:nil];
+    }
 }
 
 -(void)didReceiveMemoryWarning {
