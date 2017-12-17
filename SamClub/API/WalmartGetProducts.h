@@ -10,8 +10,9 @@
 
 @protocol getProductsProtocol <NSObject>
 @required
-- (void)fetchDataCompleted:(NSDictionary *)responseDict;
 - (void)fetchImageCompleted:(NSData *) imgData urlStr:(NSString *)urlString;
+@optional
+- (void)fetchDataCompleted:(NSDictionary *)responseDict;
 @end
 
 @interface WalmartGetProducts : NSObject

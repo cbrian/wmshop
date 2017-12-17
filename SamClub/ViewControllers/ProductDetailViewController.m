@@ -12,7 +12,7 @@
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
-@interface ProductDetailViewController () <UIWebViewDelegate>
+@interface ProductDetailViewController () <UIWebViewDelegate, getProductsProtocol>
 @property (strong, nonatomic) IBOutlet UILabel *productName;
 @property (strong, nonatomic) IBOutlet UILabel *productCost;
 @property (strong, nonatomic) IBOutlet UILabel *productRating;
@@ -58,23 +58,31 @@
     NSData *cachedProductImageData = [self.cachedImages objectForKey:urlStr];
     if (cachedProductImageData)
     {
+        UIImage *image = [UIImage imageWithData:cachedProductImageData];
+        [self.productImage  setFrame:CGRectMake(0.0, 0.0, image.size.width, image.size.height)];
         self.productImage.image = [UIImage imageWithData:cachedProductImageData];
     }
     else
     {
         WalmartGetProducts *wmGetService = [WalmartGetProducts sharedInstance];
+        wmGetService.delegate = self;
         [wmGetService requestProductImageAPI:urlStr];
-        __weak ProductDetailViewController *weakself = self;
-        dispatch_async(kBgQueue, ^{
-            NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIImage *image = [UIImage imageWithData:imgData];
-                
-                [self.productImage  setFrame:CGRectMake(0.0, 0.0, image.size.width, image.size.height)];
-                weakself.productImage.image = [UIImage imageWithData:imgData];
-            });
-        });
     }
+}
+
+- (void)fetchImageCompleted:(NSData *) imgData urlStr:(NSString *)urlString
+{
+    //STORE IN FILESYSTEM for app quit or offline
+    NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *file = [cachesDirectory stringByAppendingPathComponent:urlString];
+    [imgData writeToFile:file atomically:YES];
+    
+    // STORE IN MEMORY
+    [self.cachedImages setObject:imgData forKey:urlString];
+    __weak ProductDetailViewController *weakself = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+         weakself.productImage.image = [UIImage imageWithData:imgData];
+    });
 }
 
 -(void)setupBottomContent

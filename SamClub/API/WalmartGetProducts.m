@@ -35,7 +35,10 @@
                                                                              error:&error];
               __weak WalmartGetProducts * weakSelf = self;
               dispatch_async(dispatch_get_main_queue(), ^{
-                  [weakSelf.delegate fetchDataCompleted:jsonResponse];
+                  if ([weakSelf.delegate respondsToSelector:@selector(fetchDataCompleted:)])
+                  {
+                      [weakSelf.delegate fetchDataCompleted:jsonResponse];
+                  }
               });
           }
           else
@@ -52,10 +55,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
         if (imgData) {
-            if ([weakSelf.delegate respondsToSelector:@selector(fetchImageCompleted:urlStr:)])
-            {
                 [weakSelf.delegate fetchImageCompleted:imgData urlStr:urlString];
-            }
         }
     });
 }
