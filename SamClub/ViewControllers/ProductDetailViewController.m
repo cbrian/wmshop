@@ -68,6 +68,9 @@
         dispatch_async(kBgQueue, ^{
             NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
             dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage *image = [UIImage imageWithData:imgData];
+                
+                [self.productImage  setFrame:CGRectMake(0.0, 0.0, image.size.width, image.size.height)];
                 weakself.productImage.image = [UIImage imageWithData:imgData];
             });
         });
