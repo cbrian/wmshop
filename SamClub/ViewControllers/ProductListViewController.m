@@ -10,6 +10,7 @@
 #import "ProductDetailParentViewController.h"
 #import "NSString+SCExtensions.h"
 #import "WalmartGetProducts.h"
+#import "WMFilesCache.h"
 
 #define kMaxProductPerPage 30
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -59,8 +60,6 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
 
 -(void) fetchDataCompleted:(NSDictionary *)jsonResponse
 {
-    //NSLog(@"jsonResponse Results are %@", jsonResponse);
-
     if (jsonResponse) {
         [self.products addObjectsFromArray:[jsonResponse objectForKey:@"products"]];
         self.totalProducts = [[jsonResponse objectForKey:@"totalProducts"] integerValue];
@@ -116,26 +115,33 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     }
     else
     {
-        WalmartGetProducts *service = [WalmartGetProducts sharedInstance];
-        service.delegate = self;
-        [service requestProductImageAPI:urlString];
-        self.saveCell = cell;
+        NSData *cachedProductImageData = [WMFilesCache cachedDataWithName:urlString];
+        if (cachedProductImageData)
+        {
+            self.saveCell.imageView.image = [UIImage imageWithData:cachedProductImageData];
+            [self.tableView reloadData]; // check if still needed
+        }
+        else
+        {
+            WalmartGetProducts *service = [WalmartGetProducts sharedInstance];
+            service.delegate = self;
+            [service requestProductImageAPI:urlString];
+            self.saveCell = cell;
+        }
     }
 }
 
 - (void)fetchImageCompleted:(NSData *) imgData urlStr:(NSString *)urlString
 {
-    //STORE IN FILESYSTEM for app quit or offline
-    NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *file = [cachesDirectory stringByAppendingPathComponent:urlString];
-    [imgData writeToFile:file atomically:YES];
+    //STORE IN FILESYSTEM
+    // [WMFilesCache saveToCacheDirectory:imgData withName:urlString];
     
     // STORE IN MEMORY
     [self.cacheProductImages setObject:imgData forKey:urlString];
     __weak ProductListViewController *weakself = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         weakself.saveCell.imageView.image = [UIImage imageWithData:imgData];
-        [weakself.tableView reloadData]; // Todo: Change to refresh cell later if UI slows
+        [weakself.tableView reloadData];
     });
 }
 
@@ -179,15 +185,6 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
         self.isListingFinished = true;
         NSLog(@"Finished");
     }
-    
-    // TODO: Save to add offline support later if requested
-//    [self.fetchedResultsController.fetchRequest setFetchLimit:newFetchLimit];
-//    [NSFetchedResultsController deleteCacheWithName:@"cache name"];
-//    NSError *error;
-//    if (![self.fetchedResultsController performFetch:&error]) {
-//        // Update to handle the error appropriately.
-//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//    }
 }
 
 @end

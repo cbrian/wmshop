@@ -26,6 +26,7 @@
 		46181D861FE102D100D5521B /* NSString+SCExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D851FE102D100D5521B /* NSString+SCExtensions.m */; };
 		46181D871FE102D100D5521B /* NSString+SCExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D851FE102D100D5521B /* NSString+SCExtensions.m */; };
 		46181D881FE102D100D5521B /* NSString+SCExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 46181D851FE102D100D5521B /* NSString+SCExtensions.m */; };
+		46ECD6401FE6E4BB0090586C /* WMFilesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 46ECD63F1FE6E4BB0090586C /* WMFilesCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		46181D801FE0D9F200D5521B /* ProductDetailParentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductDetailParentViewController.m; sourceTree = "<group>"; };
 		46181D841FE102D100D5521B /* NSString+SCExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+SCExtensions.h"; path = "SamClub/Extensions/NSString+SCExtensions.h"; sourceTree = SOURCE_ROOT; };
 		46181D851FE102D100D5521B /* NSString+SCExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+SCExtensions.m"; path = "SamClub/Extensions/NSString+SCExtensions.m"; sourceTree = SOURCE_ROOT; };
+		46ECD63E1FE6E4BB0090586C /* WMFilesCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMFilesCache.h; sourceTree = "<group>"; };
+		46ECD63F1FE6E4BB0090586C /* WMFilesCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMFilesCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,7 @@
 				46181D461FDC783900D5521B /* Main.storyboard */,
 				46181D4E1FDC783900D5521B /* LaunchScreen.storyboard */,
 				46181D781FDDE63300D5521B /* ViewControllers */,
+				46ECD63D1FE6E47A0090586C /* Helper */,
 				46181D891FE102DC00D5521B /* Extensions */,
 				46181D791FDE01A500D5521B /* API */,
 				46181D4C1FDC783900D5521B /* Assets.xcassets */,
@@ -183,6 +187,15 @@
 				46181D851FE102D100D5521B /* NSString+SCExtensions.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		46ECD63D1FE6E47A0090586C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				46ECD63E1FE6E4BB0090586C /* WMFilesCache.h */,
+				46ECD63F1FE6E4BB0090586C /* WMFilesCache.m */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +339,7 @@
 				46181D531FDC783900D5521B /* main.m in Sources */,
 				46181D4B1FDC783900D5521B /* SamClub.xcdatamodeld in Sources */,
 				46181D7C1FDE048000D5521B /* WalmartGetProducts.m in Sources */,
+				46ECD6401FE6E4BB0090586C /* WMFilesCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

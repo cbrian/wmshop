@@ -9,6 +9,7 @@
 #import "ProductDetailViewController.h"
 #import "NSString+SCExtensions.h"
 #import "WalmartGetProducts.h"
+#import "WMFilesCache.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
@@ -64,18 +65,24 @@
     }
     else
     {
-        WalmartGetProducts *wmGetService = [WalmartGetProducts sharedInstance];
-        wmGetService.delegate = self;
-        [wmGetService requestProductImageAPI:urlStr];
+        NSData *cachedProductImageData = [WMFilesCache cachedDataWithName:urlStr];
+        if (cachedProductImageData)
+        {
+            self.productImage.image = [UIImage imageWithData:cachedProductImageData];
+        }
+        else
+        {
+            WalmartGetProducts *wmGetService = [WalmartGetProducts sharedInstance];
+            wmGetService.delegate = self;
+            [wmGetService requestProductImageAPI:urlStr];
+        }
     }
 }
-
+         
 - (void)fetchImageCompleted:(NSData *) imgData urlStr:(NSString *)urlString
 {
-    //STORE IN FILESYSTEM for app quit or offline
-    NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *file = [cachesDirectory stringByAppendingPathComponent:urlString];
-    [imgData writeToFile:file atomically:YES];
+    //STORE IN FILESYSTEM
+    // [WMFilesCache saveToCacheDirectory:imgData withName:urlString];
     
     // STORE IN MEMORY
     [self.cachedImages setObject:imgData forKey:urlString];
