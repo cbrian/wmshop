@@ -11,6 +11,5 @@
 @interface ProductDetailParentViewController : UIViewController <UIPageViewControllerDataSource>
 @property (nonatomic, strong) NSArray *products;
 @property (nonatomic, strong) NSCache *cachedImages;
-@property (assign, nonatomic) NSInteger currentProductIndex;
 @property (assign, nonatomic) NSUInteger pageIndex;
 @end

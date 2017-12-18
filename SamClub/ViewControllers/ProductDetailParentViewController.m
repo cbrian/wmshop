@@ -101,6 +101,7 @@
 - (ProductDetailViewController *)viewControllerAtIndex:(NSUInteger)index
 {
     if (([self.products count] == 0) || (index >= [self.products count])) {
+        
         return nil;
     }
     
