@@ -82,7 +82,7 @@
 - (void)fetchImageCompleted:(NSData *) imgData urlStr:(NSString *)urlString
 {
     //STORE IN FILESYSTEM
-    // [WMFilesCache saveToCacheDirectory:imgData withName:urlString];
+    [WMFilesCache saveToCacheDirectory:imgData withName:urlString];
     
     // STORE IN MEMORY
     [self.cachedImages setObject:imgData forKey:urlString];

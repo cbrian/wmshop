@@ -119,7 +119,7 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
         if (cachedProductImageData)
         {
             self.saveCell.imageView.image = [UIImage imageWithData:cachedProductImageData];
-            [self.tableView reloadData]; // check if still needed
+            [self.tableView reloadData];
         }
         else
         {
@@ -134,7 +134,7 @@ const NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
 - (void)fetchImageCompleted:(NSData *) imgData urlStr:(NSString *)urlString
 {
     //STORE IN FILESYSTEM
-    // [WMFilesCache saveToCacheDirectory:imgData withName:urlString];
+    [WMFilesCache saveToCacheDirectory:imgData withName:urlString];
     
     // STORE IN MEMORY
     [self.cacheProductImages setObject:imgData forKey:urlString];

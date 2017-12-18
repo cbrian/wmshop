@@ -22,7 +22,7 @@ const NSString * kWMPathMapDictonaryKey = @"WM_PATH_MAP_KEY";
     static NSString *cachePath = nil;
     if(!cachePath) {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        cachePath = [paths objectAtIndex:0];
+        cachePath = [paths lastObject];
     }
     
     return cachePath;
@@ -47,22 +47,6 @@ const NSString * kWMPathMapDictonaryKey = @"WM_PATH_MAP_KEY";
 {
     NSString *path = [WMFilesCache pathForName:name];
     [data writeToFile:path atomically:YES];
-
-#if EnableCachedFileMapDictionaryFromNSUserDefaults
-    // TODO: Check here again for additional work
-    NSMutableDictionary *wmCacheFileMapDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:kWMPathMapDictonaryKey];
-    if (lastReadRow && !wmCacheFileMapDictionary)
-    {   // Consider to backup all files per page in one save op instead of one row at a time
-        wmCacheFileMapDictionary = [[NSMutableDictionary  alloc] init];
-        [wmCacheFileMapDictionary setObject:name forKey:path];
-        [[NSUserDefaults standardUserDefaults] setObject:wmCacheFileMapDictionary forKey:kWMPathMapDictonaryKey];
-    }
-    else
-    {
-        [wmCacheFileMapDictionary setObject:name forKey:path];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
-#endif
 }
 
 ///
@@ -70,15 +54,9 @@ const NSString * kWMPathMapDictonaryKey = @"WM_PATH_MAP_KEY";
 ///
 +(NSData *)cachedDataWithName:(NSString *)name
 {
-#if EnableCachedFileMapDictionaryFromNSUserDefaults
-    NSDictionary *wmCacheFileMapDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:kWMPathMapDictonaryKey];
-    NSString *path = wmCacheFileMapDictionary[name];
-#else
     NSString *path = [WMFilesCache pathForName:name];
-#endif
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:path];
     if(fileExists) {
-        
         NSData *data = [NSData dataWithContentsOfFile:path];
         return data;
         
